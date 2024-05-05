@@ -1,0 +1,61 @@
+{
+  "version": 4,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 23,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "MinSizeRel",
+        "CMAKE_INSTALL_PREFIX": "~/.local",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true
+      }
+    },
+    {
+      "name": "host_gcc",
+      "displayName": "Host GCC",
+      "description": "Host GCC with Ninja",
+      "inherits": "base",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "verbose": false
+    },
+    {
+      "name": "host_gcc",
+      "displayName": "Host GCC",
+      "inherits": "base",
+      "configurePreset": "host_gcc"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "test",
+      "configurePreset": "host_gcc",
+      "output": {
+        "shortProgress": false,
+        "outputOnFailure": true,
+        "outputLogFile": "ring_buffer_mcu.log"
+      },
+      "execution": {
+        "stopOnFailure": true,
+        "jobs": 0,
+        "scheduleRandom": true,
+        "timeout": 0
+      }
+    }
+  ]
+}

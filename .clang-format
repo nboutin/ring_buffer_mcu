@@ -1,0 +1,48 @@
+---
+Language: Json
+BasedOnStyle: LLVM
+---
+Language: Cpp
+AlignAfterOpenBracket: Align
+AlignArrayOfStructures: Right
+AlignConsecutiveAssignments: Consecutive
+AlignConsecutiveMacros: Consecutive
+AlignOperands: Align
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortEnumsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: Empty
+AlwaysBreakAfterReturnType: None
+AlwaysBreakTemplateDeclarations: Yes
+BinPackArguments: false
+BinPackParameters: false
+BraceWrapping:
+    AfterCaseLabel: true
+    AfterClass: false
+    AfterControlStatement: Always
+    AfterEnum: false
+    AfterFunction: true
+    AfterNamespace: false
+    AfterStruct: false
+    AfterUnion: false
+    AfterExternBlock: false
+    BeforeCatch: true
+    BeforeElse: true
+    SplitEmptyFunction: false
+    SplitEmptyRecord: false
+    SplitEmptyNamespace: false
+BreakBeforeBinaryOperators: NonAssignment
+BreakBeforeBraces: Custom
+BreakStringLiterals: false
+ColumnLimit: 80
+IndentCaseLabels: true
+IndentPPDirectives: None
+IndentExternBlock: NoIndent
+IndentWidth: 2
+PointerAlignment: Left
+ReflowComments: true
+SpaceAfterCStyleCast: true
+SpaceBeforeCaseColon: false
+TabWidth: 2
+UseCRLF: false
+UseTab: Never
