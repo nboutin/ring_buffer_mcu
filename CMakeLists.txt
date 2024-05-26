@@ -20,4 +20,6 @@ target_link_libraries(${PROJECT_NAME}
   PRIVATE
 )
 
+if(BUILD_TESTING AND RING_BUFFER_MCU_TEST)
 add_subdirectory(test)
+endif()
