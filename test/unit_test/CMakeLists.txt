@@ -1,20 +1,6 @@
 cmake_minimum_required(VERSION 3.28)
 project(ring_buffer_mcu_ut)
 
-include(CTest)
-enable_testing()
-
-include(cmake/get_cpm.cmake)
-include(cmake/CPM.cmake)
-CPMAddPackage(
-  NAME googletest
-  GITHUB_REPOSITORY google/googletest
-  VERSION 1.13.0
-  OPTIONS
-      "INSTALL_GTEST OFF"
-      "gtest_force_shared_crt ON"
-)
-
 add_executable(${PROJECT_NAME}
   $<TARGET_OBJECTS:ring_buffer_mcu>
   $<TARGET_OBJECTS:buffer_mcu>
@@ -31,7 +17,7 @@ add_executable(${PROJECT_NAME}
   suites/ut_rbuf_write_uint8.cpp
   suites/ut_rbuf.cpp
 )
-target_link_libraries(${PROJECT_NAME} PRIVATE ring_buffer_mcu GTest::gmock_main)
+target_link_libraries(${PROJECT_NAME} PRIVATE ring_buffer_mcu gtest gtest_main gmock)
 add_test(NAME ${PROJECT_NAME} COMMAND ${PROJECT_NAME})
 
 include(GoogleTest)

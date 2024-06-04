@@ -11,7 +11,6 @@
       "hidden": true,
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "MinSizeRel",
-        "CMAKE_INSTALL_PREFIX": "~/.local",
         "CMAKE_EXPORT_COMPILE_COMMANDS": true
       }
     },
@@ -26,6 +25,19 @@
         "CMAKE_C_COMPILER": "gcc",
         "CMAKE_CXX_COMPILER": "g++"
       }
+    },
+    {
+      "name": "host_gcc_test",
+      "displayName": "Host GCC Test",
+      "inherits": "base",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_C_COMPILER": "gcc",
+        "CMAKE_CXX_COMPILER": "g++",
+        "CMAKE_BUILD_TYPE": "Debug",
+        "RING_BUFFER_MCU_TEST": "ON"
+      }
     }
   ],
   "buildPresets": [
@@ -39,16 +51,22 @@
       "displayName": "Host GCC",
       "inherits": "base",
       "configurePreset": "host_gcc"
+    },
+    {
+      "name": "host_gcc_test",
+      "displayName": "Host GCC Test",
+      "inherits": "base",
+      "configurePreset": "host_gcc_test"
     }
   ],
   "testPresets": [
     {
-      "name": "test",
-      "configurePreset": "host_gcc",
+      "name": "host_gcc_test",
+      "configurePreset": "host_gcc_test",
       "output": {
         "shortProgress": false,
         "outputOnFailure": true,
-        "outputLogFile": "ring_buffer_mcu.log"
+        "outputLogFile": "${sourceDir}.log"
       },
       "execution": {
         "stopOnFailure": true,
